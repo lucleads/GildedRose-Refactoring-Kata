@@ -9,17 +9,57 @@ final class Item
     /**
      * @var string
      */
-    public $name;
+    private $name;
 
     /**
      * @var int
      */
-    public $sell_in;
+    private $sell_in;
+
+    /**
+     * @param int $sell_in
+     */
+    public function setSellIn(int $sell_in): void
+    {
+        $this->sell_in = $sell_in;
+    }
 
     /**
      * @var int
      */
-    public $quality;
+    private $quality;
+
+    /**
+     * @param int $quality
+     */
+    public function setQuality(int $quality): void
+    {
+        $this->quality = $quality;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSellIn(): int
+    {
+        return $this->sell_in;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuality(): int
+    {
+        return $this->quality;
+    }
 
     public function __construct(string $name, int $sell_in, int $quality)
     {

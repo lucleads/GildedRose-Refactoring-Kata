@@ -23,48 +23,48 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name != self::AGED_BRIE and $item->name != self::BACKSTAGE) {
-                if ($item->quality > 0) {
-                    if ($item->name != self::SULFURAS) {
-                        $item->quality = $item->quality - 1;
+            if ($item->getName() != self::AGED_BRIE and $item->getName() != self::BACKSTAGE) {
+                if ($item->getQuality() > 0) {
+                    if ($item->getName() != self::SULFURAS) {
+                        $item->setQuality($item->getQuality() - 1);
                     }
                 }
             } else {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-                    if ($item->name == self::BACKSTAGE) {
-                        if ($item->sell_in < 11) {
-                            if ($item->quality < 50) {
-                                $item->quality = $item->quality + 1;
+                if ($item->getQuality() < 50) {
+                    $item->setQuality($item->getQuality() + 1);
+                    if ($item->getName() == self::BACKSTAGE) {
+                        if ($item->getSellIn() < 11) {
+                            if ($item->getQuality() < 50) {
+                                $item->setQuality($item->getQuality() + 1);
                             }
                         }
-                        if ($item->sell_in < 6) {
-                            if ($item->quality < 50) {
-                                $item->quality = $item->quality + 1;
+                        if ($item->getSellIn() < 6) {
+                            if ($item->getQuality() < 50) {
+                                $item->setQuality($item->getQuality() + 1);
                             }
                         }
                     }
                 }
             }
 
-            if ($item->name != self::SULFURAS) {
-                $item->sell_in = $item->sell_in - 1;
+            if ($item->getName() != self::SULFURAS) {
+                $item->setSellIn($item->getSellIn() - 1);
             }
 
-            if ($item->sell_in < 0) {
-                if ($item->name != self::AGED_BRIE) {
-                    if ($item->name != self::BACKSTAGE) {
-                        if ($item->quality > 0) {
-                            if ($item->name != self::SULFURAS) {
-                                $item->quality = $item->quality - 1;
+            if ($item->getSellIn() < 0) {
+                if ($item->getName() != self::AGED_BRIE) {
+                    if ($item->getName() != self::BACKSTAGE) {
+                        if ($item->getQuality() > 0) {
+                            if ($item->getName() != self::SULFURAS) {
+                                $item->setQuality($item->getQuality() - 1);
                             }
                         }
                     } else {
-                        $item->quality = $item->quality - $item->quality;
+                        $item->setQuality($item->getQuality() - $item->getQuality());
                     }
                 } else {
-                    if ($item->quality < 50) {
-                        $item->quality = $item->quality + 1;
+                    if ($item->getQuality() < 50) {
+                        $item->setQuality($item->getQuality() + 1);
                     }
                 }
             }
