@@ -23,7 +23,7 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->getName() != self::AGED_BRIE and $item->getName() != self::BACKSTAGE) {
+            if ($item->getName() != self::AGED_BRIE && $item->getName() != self::BACKSTAGE) {
                 if ($item->getQuality() > 0) {
                     if ($item->getName() != self::SULFURAS) {
                         $item->setQuality($item->getQuality() - 1);
