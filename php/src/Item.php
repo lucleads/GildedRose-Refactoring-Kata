@@ -17,17 +17,17 @@ final class Item
     private $sell_in;
 
     /**
+     * @var int
+     */
+    private $quality;
+
+    /**
      * @param int $sell_in
      */
     public function setSellIn(int $sell_in): void
     {
         $this->sell_in = $sell_in;
     }
-
-    /**
-     * @var int
-     */
-    private $quality;
 
     /**
      * @param int $quality
@@ -71,5 +71,38 @@ final class Item
     public function __toString(): string
     {
         return "{$this->name}, {$this->sell_in}, {$this->quality}";
+    }
+
+    /**
+     * substractOneQuality
+     */
+    public function substractOneQuality(): void
+    {
+        $this->quality--;
+    }
+
+    /**
+     * addOneQuality
+     */
+    public function addOneQuality(): void
+    {
+        $this->quality++;
+    }
+
+    /**
+     * substractOneSellIn
+     */
+    public function substractOneSellIn(): void
+    {
+        $this->sell_in--;
+    }
+
+    /**
+     * qualityHalfSuperior
+     * @return bool
+     */
+    public function lessThanHalfQuality(): bool
+    {
+        return $this->quality < 50;
     }
 }

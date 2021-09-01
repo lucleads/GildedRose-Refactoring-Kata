@@ -25,38 +25,38 @@ final class GildedRose
         foreach ($this->items as $item) {
             if ($item->getName() != self::AGED_BRIE && $item->getName() != self::BACKSTAGE) {
                 if ($item->getQuality() > 0 && $item->getName() != self::SULFURAS) {
-                    $item->setQuality($item->getQuality() - 1);
+                    $item->substractOneQuality();
                 }
             } else {
-                if ($item->getQuality() < 50) {
-                    $item->setQuality($item->getQuality() + 1);
+                if ($item->lessThanHalfQuality()) {
+                    $item->addOneQuality();
                     if ($item->getName() == self::BACKSTAGE) {
-                        if ($item->getSellIn() < 11 && $item->getQuality() < 50) {
-                            $item->setQuality($item->getQuality() + 1);
+                        if ($item->getSellIn() < 11 && $item->lessThanHalfQuality()) {
+                            $item->addOneQuality();
                         }
-                        if ($item->getSellIn() < 6 && $item->getQuality() < 50) {
-                            $item->setQuality($item->getQuality() + 1);
+                        if ($item->getSellIn() < 6 && $item->lessThanHalfQuality()) {
+                            $item->addOneQuality();
                         }
                     }
                 }
             }
 
             if ($item->getName() != self::SULFURAS) {
-                $item->setSellIn($item->getSellIn() - 1);
+                $item->substractOneSellIn();
             }
 
             if ($item->getSellIn() < 0) {
                 if ($item->getName() != self::AGED_BRIE) {
                     if ($item->getName() != self::BACKSTAGE) {
                         if ($item->getQuality() > 0 && $item->getName() != self::SULFURAS) {
-                            $item->setQuality($item->getQuality() - 1);
+                            $item->substractOneQuality();
                         }
                     } else {
                         $item->setQuality(0);
                     }
                 } else {
-                    if ($item->getQuality() < 50) {
-                        $item->setQuality($item->getQuality() + 1);
+                    if ($item->lessThanHalfQuality()) {
+                        $item->addOneQuality();
                     }
                 }
             }
