@@ -4,105 +4,74 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
-final class Item
+use GildedRose\Wrappers\ItemName;
+use GildedRose\Wrappers\ItemQuality;
+use GildedRose\Wrappers\ItemSellIn;
+
+/**
+ * Class Item
+ * @package GildedRose
+ */
+abstract class Item
 {
     /**
-     * @var string
+     * @var ItemName
      */
-    private $name;
+    protected $name;
 
     /**
-     * @var int
+     * @var ItemSellIn
      */
-    private $sell_in;
+    protected $sellIn;
 
     /**
-     * @var int
+     * @var ItemQuality
      */
-    private $quality;
-
-    /**
-     * @param int $sell_in
-     */
-    public function setSellIn(int $sell_in): void
-    {
-        $this->sell_in = $sell_in;
-    }
+    protected $quality;
 
     /**
      * @param int $quality
      */
-    public function setQuality(int $quality): void
+    protected function setQuality(int $quality): void
     {
-        $this->quality = $quality;
+        $this->quality = new ItemQuality($quality);
     }
 
     /**
-     * @return string
+     * getName
+     * @return ItemName
      */
-    public function getName(): string
+    public function getName(): ItemName
     {
         return $this->name;
     }
 
     /**
-     * @return int
+     * @return ItemSellIn
      */
-    public function getSellIn(): int
+    protected function getSellIn(): ItemSellIn
     {
-        return $this->sell_in;
+        return $this->sellIn;
     }
 
     /**
-     * @return int
+     * @param ItemName $name
+     * @param ItemSellIn $sell_in
+     * @param ItemQuality $quality
      */
-    public function getQuality(): int
-    {
-        return $this->quality;
-    }
-
-    public function __construct(string $name, int $sell_in, int $quality)
+    public function __construct(ItemName $name, ItemSellIn $sell_in, ItemQuality $quality)
     {
         $this->name = $name;
-        $this->sell_in = $sell_in;
+        $this->sellIn = $sell_in;
         $this->quality = $quality;
     }
 
+    /**
+     * __toString
+     * @return string
+     */
     public function __toString(): string
     {
-        return "{$this->name}, {$this->sell_in}, {$this->quality}";
-    }
-
-    /**
-     * substractOneQuality
-     */
-    public function substractOneQuality(): void
-    {
-        $this->quality--;
-    }
-
-    /**
-     * addOneQuality
-     */
-    public function addOneQuality(): void
-    {
-        $this->quality++;
-    }
-
-    /**
-     * substractOneSellIn
-     */
-    public function substractOneSellIn(): void
-    {
-        $this->sell_in--;
-    }
-
-    /**
-     * qualityHalfSuperior
-     * @return bool
-     */
-    public function lessThanHalfQuality(): bool
-    {
-        return $this->quality < 50;
+        return "{$this->name->getValue()}, {$this->sellIn->getValue()}, {$this->quality->getValue()}";
     }
 }
