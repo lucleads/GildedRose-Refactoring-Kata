@@ -11,16 +11,16 @@ echo 'OMGHAI!' . PHP_EOL;
 
 $selectorItem = new ItemSelector();
 $items = [
-    $selectorItem->clasifyItem('+5 Dexterity Vest', 10, 20),
-    $selectorItem->clasifyItem('Aged Brie', 2, 0),
-    $selectorItem->clasifyItem('Elixir of the Mongoose', 5, 7),
-    $selectorItem->clasifyItem('Sulfuras, Hand of Ragnaros', 0, 80),
-    $selectorItem->clasifyItem('Sulfuras, Hand of Ragnaros', -1, 80),
-    $selectorItem->clasifyItem('Backstage passes to a TAFKAL80ETC concert', 15, 20),
-    $selectorItem->clasifyItem('Backstage passes to a TAFKAL80ETC concert', 10, 49),
-    $selectorItem->clasifyItem('Backstage passes to a TAFKAL80ETC concert', 5, 49),
+    $selectorItem::clasifyItem('+5 Dexterity Vest', 10, 20),
+    $selectorItem::clasifyItem('Aged Brie', 2, 0),
+    $selectorItem::clasifyItem('Elixir of the Mongoose', 5, 7),
+    $selectorItem::clasifyItem('Sulfuras, Hand of Ragnaros', 0, 80),
+    $selectorItem::clasifyItem('Sulfuras, Hand of Ragnaros', -1, 80),
+    $selectorItem::clasifyItem('Backstage passes to a TAFKAL80ETC concert', 15, 20),
+    $selectorItem::clasifyItem('Backstage passes to a TAFKAL80ETC concert', 10, 49),
+    $selectorItem::clasifyItem('Backstage passes to a TAFKAL80ETC concert', 5, 49),
     // this conjured item does not work properly yet
-    $selectorItem->clasifyItem('Conjured Mana Cake', 3, 6),
+    $selectorItem::clasifyItem('Conjured Mana Cake', 3, 6),
 ];
 
 $app = new GildedRose($items);
